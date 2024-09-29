@@ -74,16 +74,27 @@ class MovieApp:
         movie_grid_html = ""
         for movie in movies.values():
             movie_grid_html += f"""
-            <div class="movie">
-                <img src="{movie['poster']}" alt="{movie['title']} poster">
-                <h2>{movie['title']}</h2>
-                <p>Year: {movie['year']}</p>
-                <p>Rating: {movie['rating']}</p>
-            </div>
-            """
+        <div class="movie" style="
+            border: 2px solid #333;
+            border-radius: 10px;
+            background-color: #fff;
+            padding: 20px;
+            margin: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: calc(33.333% - 40px); /* Width for 3 columns minus margin */
+            box-sizing: border-box;
+            transition: transform 0.2s;
+        ">
+            <img src="{movie['poster']}" alt="{movie['title']} poster" style="max-width: 100%; height: auto; border-radius: 5px;">
+            <h2 style="font-size: 1.2em; color: #333;">{movie['title']}</h2>
+            <p style="font-size: 0.9em; color: #666;">Year: {movie['year']}</p>
+            <p style="font-size: 0.9em; color: #666;">Rating: {movie['rating']}</p>
+        </div>
+        """
 
         # Replace the placeholders in the template
-        generated_html = template.replace("__TEMPLATE_TITLE__", "My Movie Collection")
+        generated_html = template.replace("__TEMPLATE_TITLE__", "Alperen's Movie Collection")
         generated_html = generated_html.replace("__TEMPLATE_MOVIE_GRID__", movie_grid_html)
 
         # Write the generated HTML to index.html
